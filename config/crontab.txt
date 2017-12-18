@@ -1,0 +1,19 @@
+SHELL=/bin/bash
+
+LOG_CRON_STDOUT=/var/log/cto/cron.stdout.log
+LOG_CRON_STDERR=/var/log/cto/cron.stderr.log
+
+RUN="/bin/bash -l -c"
+
+APP_DIR=/var/cto
+PYTHON=/usr/bin/python2.7
+
+# 本日のメニュー
+%%BATCH_RUN_MINUTE%% %%BATCH_RUN_HOUR%% * * 1-5 $RUN "$PYTHON $APP_DIR/app.py 1>> $LOG_CRON_STDOUT 2>> $LOG_CRON_STDERR"
+
+# 今週のメニュー
+# 0 9 * * 1 ...
+
+# 来週のメニュー
+# 0 9 * * 5 ...
+

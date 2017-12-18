@@ -1,0 +1,10 @@
+[app]
+run_mode    = %%RUN_MODE%%
+
+[slack]
+; Slack Incoming WebHooks URL
+hooks_url   = %%SLACK_HOOKS_URL%%
+channel     = %%SLACK_CHANNEL%%
+username    = %%SLACK_USERNAME%%
+icon_emoji  = %%SLACK_ICON_EMOJI%%
+
