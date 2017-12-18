@@ -2,6 +2,10 @@
 
 * [玉子屋](http://www.tamagoya.co.jp/) の当日分のメニューを Slack に通知
 
+![](/image/icon.piyo.120.png)
+
+
+
 ----
 
 ## Usage
