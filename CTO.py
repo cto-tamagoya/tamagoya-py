@@ -109,13 +109,12 @@ class tamagoya():
         if not icon_emoji:
             icon_emoji = self.getConfig('slack', 'icon_emoji')
 
+        '''
         payload = {
             'text':         text,
             'username':     username,
             'channel':      '#%s' % channel,
             'icon_emoji':   ':%s:' % icon_emoji,
-            'attachments':  attachments
-            '''
             'attachments': [
                 {
                     'color':    'good', # good / warning / danger / ...
@@ -125,7 +124,14 @@ class tamagoya():
                 },
                 ...
             ],
-            '''
+        }
+        '''
+        payload = {
+            'text':         text,
+            'username':     username,
+            'channel':      '#%s' % channel,
+            'icon_emoji':   ':%s:' % icon_emoji,
+            'attachments':  attachments
         }
         response = requests.post(hooks_url, data=json.dumps(payload))
 
@@ -145,7 +151,10 @@ class tamagoya():
 
         result = []
 
-        for row in soup.find_all('div', class_='menu_title'):
+        rows = soup.find_all('div', class_='menu_title')
+        for i in range(len(rows)):
+            row = rows[i]
+
             v = re.match(u'^(\d+)日\((.+)\)$', row.text)
             day = int(v.group(1))
             # weekday_japanease = v.group(2)
@@ -156,6 +165,8 @@ class tamagoya():
 
             menu_list = soup.find_all('div', class_='menu_list')[i]
             menu_main_dish = menu_list.find('li', class_='menu_maindish').text
+
+            menu_side_dish_list = []
             for menu in menu_list.find_all('li', class_='menu_arrow'):
                 menu_side_dish_list.append(menu.text)
 
@@ -187,6 +198,8 @@ class tamagoya():
                 'message':      message,
             })
 
+        return result
+
 
     def shareMenuOfToday(self):
         ''' 今日のメニューを共有
@@ -205,9 +218,9 @@ class tamagoya():
 
         menu = None
         for row in menu_list:
-            if row.day != today.day:
+            if row['day'] != today.day:
                 continue
-            if row.weekday != today.weekday():
+            if row['weekday'] != today.weekday():
                 continue
             menu = row
 
@@ -216,9 +229,14 @@ class tamagoya():
             self.log('not applicable', force=True)
             return None
 
+        message = "%s\n\n%s" % (
+            u'*本日のメニュー : %04d/%02d/%02d (%s)*' % (today.year, today.month, today.day, self.weekday_japanease_list[today.weekday()]),
+            row['message'])
+
         attachments = [{'color': 'danger', 'text': menu['main_dish']}]
         for menu_side_dish in menu['side_dish']:
             attachments.append({'color': 'good', 'text': menu_side_dish})
+
         return self.postToSlack(message, attachments)
 
 
