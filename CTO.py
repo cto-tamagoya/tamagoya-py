@@ -32,6 +32,10 @@ class tamagoya():
             pass
         '''
 
+        path = '%s/cto.ini' % os.path.dirname(os.path.abspath(__file__))
+        if os.path.exists(path) and os.path.isfile(path):
+            self.config.read(path)
+
         run_mode = self.getConfig('app', 'run_mode')
         if run_mode is not None and run_mode == 'debug':
             self.verbose = True

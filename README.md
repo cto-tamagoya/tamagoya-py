@@ -6,16 +6,37 @@
 
 ## Usage
 
-### Build
-
 ```
 $ git clone git@github.com:ukyooo/cto.git cto
 $ cd cto
+```
+
+### Setting
+
+```
+$ cp ./cto.ini.template ./cto.ini # or /etc/cto.ini
+```
+
+
+
+### UnitTest
+
+```
+$ python2.7 -m unittest discover
+```
+
+
+
+### Build
+
+```
 $ docker build --no-cache --force-rm -t ukyooo/cto:latest .
 ```
 
-* **NOTE: Docker Hub に build 済みの Docker Image があります。**
+* **Docker Hub に build 済みの Docker Image があります。**
     * see: https://hub.docker.com/r/ukyooo/cto/
+
+
 
 ### Run
 

@@ -1,5 +1,6 @@
 *.pyc
 *.swp
 *.bak
+cto.ini
 app.ini
 env.ini
