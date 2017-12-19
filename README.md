@@ -1,6 +1,10 @@
 # tamagoya-py : CTO (=Chief Tamagoya Orderer)
 
+![](/image/icon.piyo.120.png)
+
 * [玉子屋](http://www.tamagoya.co.jp/) の当日分のメニューを Slack に通知
+
+![](/image/sample.shareMenuOfToday.png)
 
 ----
 
