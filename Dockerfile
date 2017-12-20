@@ -1,6 +1,8 @@
 FROM centos:6.9
 # https://hub.docker.com/r/library/centos/tags/
 
+COPY . /var/cto
+
 RUN \
 yum update -y && \
 yum install -y epel-release && \
@@ -19,7 +21,6 @@ pip2.7 install --upgrade pip && \
 mkdir -p /var/log/cto && \
 mkdir -p /etc/supervisord.d && \
 mkdir -p /etc/cto.d && \
-git clone --depth=1 -b latest git@github.com:cto-tamagoya/tamagoya-py.git /var/cto && \
 /bin/bash -c "cd /var/cto && pip install -r /var/cto/requirements.txt" && \
 yum clean all
 
