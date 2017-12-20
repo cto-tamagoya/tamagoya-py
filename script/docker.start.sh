@@ -72,9 +72,6 @@ sed -i "s|%%SLACK_ICON_EMOJI%%|$SLACK_ICON_EMOJI|" $APP_INI
 cp $APP_DIR/config/supervisord.conf /etc/supervisord.conf
 # cp $APP_DIR/config/supervisord.crond.conf /etc/supervisord.d/crond.conf
 
-# Supervisor 起動
-supervisord -c /etc/supervisord.conf
-
 # Slack 通知
 SLACK_POST_MESSAGE="*Success : CTO (=Chief Tamagoya Orderer) has started.*"
 curl -X POST -H 'Content-type: application/json' \
@@ -85,4 +82,5 @@ curl -X POST -H 'Content-type: application/json' \
     \"text\": \"$SLACK_POST_MESSAGE\",
   }" $SLACK_HOOKS_URL
 
-exit 0
+# Supervisor 起動
+supervisord -c /etc/supervisord.conf
