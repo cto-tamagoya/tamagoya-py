@@ -19,7 +19,7 @@ pip2.7 install --upgrade pip && \
 mkdir -p /var/log/cto && \
 mkdir -p /etc/supervisord.d && \
 mkdir -p /etc/cto.d && \
-git clone --depth=1 -b latest git@github.com:ukyooo/cto.git /var/cto && \
+git clone --depth=1 -b latest git@github.com:cto-tamagoya/tamagoya-py.git /var/cto && \
 /bin/bash -c "cd /var/cto && pip install -r /var/cto/requirements.txt" && \
 yum clean all
 
