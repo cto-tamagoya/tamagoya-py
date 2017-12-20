@@ -11,9 +11,11 @@
 ## Usage
 
 ```
-$ git clone git@github.com:ukyooo/cto.git cto
+$ git clone git@github.com:cto-tamagoya/tamagoya-py.git cto
 $ cd cto
 ```
+
+----
 
 ### Setting
 
@@ -21,7 +23,7 @@ $ cd cto
 $ cp ./cto.ini.template ./cto.ini # or /etc/cto.ini
 ```
 
-
+----
 
 ### UnitTest
 
@@ -29,18 +31,18 @@ $ cp ./cto.ini.template ./cto.ini # or /etc/cto.ini
 $ python2.7 -m unittest discover
 ```
 
-
+----
 
 ### Build
 
-```
-$ docker build --no-cache --force-rm -t ukyooo/cto:latest .
-```
-
 * **Docker Hub に build 済みの Docker Image があります。**
-    * see: https://hub.docker.com/r/ukyooo/cto/
+    * see: https://hub.docker.com/r/piyo/cto/
 
+```
+$ docker build --no-cache --force-rm -t piyo/cto:latest .
+```
 
+----
 
 ### Run
 
@@ -54,8 +56,10 @@ $ docker run -d \
     [-e BATCH_RUN_MINUTE=...] \
     [-e RUN_MODE=...] \
     [--name cto] \
-    ukyooo/cto:latest ;
+    piyo/cto:latest ;
 ```
+
+----
 
 #### Environment
 
@@ -85,9 +89,12 @@ $ docker run -d \
 
 ## NOTE
 
-* **これ以上の開発が進むことは (おそらく) ありません。**
-* **本件は [ex-mixi Advent Calendar 2017](https://qiita.com/advent-calendar/2017/ex-mixi) の 2017/12/21 用として作られました。**
+* **本件は [ex-mixi Advent Calendar 2017](https://qiita.com/advent-calendar/2017/ex-mixi) の 2017/12/21 用のネタとして作られました。**
     * see: [2017/12/21 : What does a CTO do ?]()
+* **これ以上の開発が進むことは (おそらく) ありません。**
+    * 最近は PHP ばかり書いていて Python のコードを書くというような頭の切り替えが簡単にできる年齢でもない為
+* **Python v3.x でも動くかもしれませんが、非難されることは覚悟の上で、敢えて Python v2.7 前提で書いています。**
+    * 理由は、以前、個人的に Python v3 で途中まで書いていたコードで必要となるモジュールが Python v3 に対応してなかったことに絶望した為
 
 ----
 
