@@ -22,7 +22,7 @@ pycparser==2.18
 pyOpenSSL==17.5.0
 python-dateutil==2.6.1
 PyYAML==5.1
-requests==2.18.4
+requests==2.20.0
 rsa==3.4.2
 s3transfer==0.1.10
 six==1.10.0
